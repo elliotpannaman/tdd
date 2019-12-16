@@ -1,9 +1,18 @@
 language: python
-python:
-  - 2.7
-  - 3.5
-  - 3.6
-  - 3.7
+matrix:
+  include:
+  - python: 2.7
+    PARALLELIZE=false
+  - python: 3.5
+    PARALLELIZE=false
+  - python: 3.6
+    PARALLELIZE=true
+  - python: 3.7
+    PARALLELIZE=false
+    dist: xenial
+  - python: 3.7
+    PARALLELIZE=true
+    dist: xenial
 before_install:
   - python --version
   - pip install -U pip
